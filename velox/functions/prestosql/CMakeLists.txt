@@ -51,6 +51,7 @@ velox_add_library(
   JsonFunctions.cpp
   Map.cpp
   MapEntries.cpp
+  MapExcept.cpp
   MapKeysAndValues.cpp
   MapSubset.cpp
   MapZipWith.cpp

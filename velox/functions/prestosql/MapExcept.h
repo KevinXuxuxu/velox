@@ -15,6 +15,9 @@
  */
 #pragma once
 
+#include <string>
+#include <string_view>
+
 #include "velox/functions/Udf.h"
 #include "velox/type/FloatingPointUtil.h"
 
@@ -147,5 +150,12 @@ struct MapExceptVarcharFunction {
   folly::F14FastSet<StringView> searchKeys_;
   std::vector<std::string> searchKeyStrings_;
 };
+
+/// Registers the simple functions above, plus a vector function under the same
+/// name that removes keys from FlatMapVector inputs by clearing their in-map
+/// bits and delegates to the simple functions for every other encoding.
+void registerMapExcept(
+    const std::string& name,
+    std::string_view defaultOwner = {});
 
 } // namespace facebook::velox::functions
